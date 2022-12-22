@@ -1,4 +1,5 @@
 from random import randint
+from time import sleep
 
 #Dibujo dado en lista
 
@@ -51,14 +52,25 @@ def lanzar_dados():
     
     return dado1, dado2
 
-def evaluar_jugada(dado1, dado2):
+def evaluar_jugada(dado1, dado2, numero):
     suma_dados = dado1 + dado2
-    if suma_dados <= 6:
-        return f"Tu puntuación es {suma_dados}. Lamentable"
-    elif suma_dados >=10:
-        return f"Tu puntuación es {suma_dados}. Tienes buena suerte!!"
+    if suma_dados == numero:
+        return f"Genial, has acertado, la suma de los dados es {suma_dados}"
     else:
-        return f"La fortuna no te sonrie, has sacado {suma_dados} puntos"
-    
+        return f"La fortuna no te sonrie, la suma de los dados es {suma_dados}"
+
+numero = 0
+while numero not in range(1, 12):
+    numero = int(input('Intenta adivinar el número que vas a sacar (la suma de los dos dados): '))
+    if numero not in range(1, 12):
+        print('El valor debe estar entre 1 y 12')
+print('Lancemos los dados...')
+sleep(1)
+print('.')
+sleep(1)
+print('..')
+sleep(1)
+print('...')
+sleep(2)
 dado1, dado2 = lanzar_dados()
-print(evaluar_jugada(dado1, dado2))
+print(evaluar_jugada(dado1, dado2, numero))
